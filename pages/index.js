@@ -3,10 +3,9 @@ import PopularMovie from "../components/PopularMovie";
 import { server } from "../config";
 
 export default function Home({ movies }) {
-  console.log(movies);
   return (
     <div className="">
-      <Hero />
+      <Hero movies={movies.results} />
       <PopularMovie movies={movies.results} />
     </div>
   );

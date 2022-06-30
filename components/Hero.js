@@ -1,7 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import Meta from "../components/Meta";
+import { server } from "../config";
+import MovieCard from "./MovieCard";
+import Image from "next/image";
 
-const Hero = () => {
+export default function Hero({ movies }) {
+  //pick a random movie
+  const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+  console.log(randomMovie);
+
   return (
     <div className="text-center bg-white pb-10">
       <div className="w-60 mx-auto">
@@ -13,13 +21,11 @@ const Hero = () => {
       <p className="text-gray-500">
         Platform for movie reviews, movie recomendation and ratings
       </p>
-      <Link href="/seemore">
+      <Link href={`/movie/${randomMovie.id}`} passHref>
         <button className="bg-gray-700 text-white py-3 px-6 rounded text-sm mt-4">
-          See More
+          Suggest a movie
         </button>
       </Link>
     </div>
   );
-};
-
-export default Hero;
+}
